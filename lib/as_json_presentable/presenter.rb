@@ -31,6 +31,11 @@ module AsJsonPresentable
       end
     end
 
+   # return object errors
+  def as_error_json(options=nil)
+    { errors: @resource.errors }
+  end
+
   private
 
     def has_presenter_method?(presenter_action)

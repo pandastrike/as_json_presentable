@@ -38,5 +38,16 @@ module AsJsonPresentable
       end
     end
 
+    describe "#as_error_json" do
+
+      context "without the :error presenter defined; should call base class" do
+        it "falls back to the resource's #as_error_json" do
+          expect(resource).to receive(:errors).once
+          subject.as_error_json
+        end
+
+      end
+    end
+
   end
 end
