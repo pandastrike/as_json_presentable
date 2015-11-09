@@ -33,7 +33,7 @@ module AsJsonPresentable
 
    # return object errors
   def as_error_json(options=nil)
-    { errors: @resource.errors }
+    { errors: resource.errors }
   end
 
   private
