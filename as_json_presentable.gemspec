@@ -1,6 +1,6 @@
 Gem::Specification.new do |s|
   s.name        = 'as_json_presentable'
-  s.version     = '0.0.1'
+  s.version     = '0.0.2'
   s.date        = '2015-10-16'
   s.summary     = "JSON presenter"
   s.description = "This is a simple implementation of the presenter pattern for JSON presentation."
