@@ -27,14 +27,18 @@ module AsJsonPresentable
       if has_presenter_method?(presenter_action)
         send(presenter_method(presenter_action), options)
       else
-        resource.as_json(options)
+        as_default_json(options)
       end
     end
 
-   # return object errors
-  def as_error_json(options=nil)
-    { errors: resource.errors }
-  end
+    def as_default_json(options=nil)
+      resource.as_json(options)
+    end
+
+    # return object errors
+    def as_error_json(options=nil)
+      { errors: resource.errors }
+    end
 
   private
 
