@@ -21,6 +21,10 @@ module AsJsonPresentable
           expect(resource).to receive(:as_json).once
           subject.as_json
         end
+        it "falls back to as_default_json" do
+          expect(subject).to receive(:as_default_json).once
+          subject.as_json
+        end
       end
 
       context "with an invalid :presenter_action" do
