@@ -45,9 +45,10 @@ class Foo
 end
 ```
 
-If `#as_json` is called without the `:presenter_action` options, or if the
-presenter class doesn't exist, this delegates to the original model class
-definition of `#as_json`
+If `#as_json` is called without the `:presenter_action` options, or if
+the presenter class doesn't exist, this delegates to
+`#as_default_json`. The default implementation of `#as_default_json`
+in turn delegates to the original model class definition of `#as_json`.
 
 Your presenter class can technically be any PORO that responds to `#as_json`,
 but there is a handy base class, `AsJsonPresentable::Presenter` that you
