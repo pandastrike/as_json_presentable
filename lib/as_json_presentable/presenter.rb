@@ -24,17 +24,19 @@ module AsJsonPresentable
     def as_json(options=nil)
       presenter_action = (options || {}).delete(:presenter_action)
 
-      if has_presenter_method?(presenter_action)
+      if presenter_action.nil?
+        resource.as_json(options)
+      elsif has_presenter_method?(presenter_action)
         send(presenter_method(presenter_action), options)
       else
-        resource.as_json(options)
+        raise InvalidPresenterAction.new("Unable to present JSON using action '#{presenter_action}'")
       end
     end
 
-   # return object errors
-  def as_error_json(options=nil)
-    { errors: resource.errors }
-  end
+     # return object errors
+    def as_error_json(options=nil)
+      { errors: resource.errors }
+    end
 
   private
 
