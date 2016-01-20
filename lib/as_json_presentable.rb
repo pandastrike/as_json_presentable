@@ -2,6 +2,9 @@ require 'as_json_presentable/presenter'
 
 module AsJsonPresentable
 
+  class InvalidPresenterAction < Exception
+  end
+
   def self.included(klass)
     klass.extend ClassMethods
   end

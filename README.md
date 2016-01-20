@@ -45,16 +45,16 @@ class Foo
 end
 ```
 
-If `#as_json` is called without the `:presenter_action` options, or if the
-presenter class doesn't exist, this delegates to the original model class
-definition of `#as_json`
+If `#as_json` is called without the `:presenter_action` options,
+this delegates to the original model class definition of `#as_json`
 
 Your presenter class can technically be any PORO that responds to `#as_json`,
 but there is a handy base class, `AsJsonPresentable::Presenter` that you
 can extend.
 
 In the base class implementation, `#as_json` looks for the `:presenter_action`
-option and attempts to call the `#as_<presenter_action>_json` method if it exists.
+option and attempts to call the `#as_<presenter_action>_json`, or raises
+`AsJsonPresentable::InvalidPresenterAction` if the method doesn't exist.
 
 Here is a complete example:
 ```ruby

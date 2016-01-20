@@ -24,9 +24,10 @@ module AsJsonPresentable
       end
 
       context "with an invalid :presenter_action" do
-        it "falls back to the resource's #as_json" do
-          expect(resource).to receive(:as_json).once
-          subject.as_json(presenter_action: :invalid_action)
+        it "raises an InvalidPresenterAction exception" do
+          expect {
+            subject.as_json(presenter_action: :invalid_action)
+          }.to raise_error(InvalidPresenterAction)
         end
       end
 
